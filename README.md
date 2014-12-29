@@ -1,12 +1,14 @@
 abs
 ===
 
-Various (incorrect) implementations of abs function. I use these
-variants to introduce random testing and the problem of integer
-overflows.
+This crate contains three incorrect implementations of the 
+'abs' function. I use these variants to introduce unit and random
+testing. I chose 'abs' since it looks so trival but it contains 
+an integer overflow.
 
-This crate two correct implementations (abs and sat_abs)
-that should demonstrate ways how one can address integer overflows.
+This crate also contains two (hopefully) correct implementations of
+'abs': abs and sat_abs. They should demonstrate ways on how one
+could address the integer overflow in the 'abs' function.
 
 
 ### Installation
