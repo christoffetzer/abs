@@ -4,17 +4,10 @@ name = "abs"
 version = "0.0.1"
 authors = ["Christof Fetzer"]
 
-description = "Various (incorrect) implementations of abs function."
-
-# The testing profile, used for `cargo test`
-[profile.test]
-opt-level = 0
-debug = true
-rpath = false
-lto = false
+description = "Various (incorrect) implementations of abs function - use to introduce random testing. Also two correct implementations that should demonstrate ways how one can address integer overflows."
 
 [dependencies.rndtester]
-path="../rndtester"
+git = "https://github.com/christoffetzer/rndtester"
 
 [dependencies.quickcheck_macros]
 git = "https://github.com/BurntSushi/quickcheck"
