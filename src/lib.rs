@@ -7,8 +7,6 @@ extern crate quickcheck;
 
 extern crate core;
 
-use core::intrinsics;
-
 #[doc = "
 An incorrect implementation of abs function. 
 
@@ -203,14 +201,15 @@ pub fn abs<T: std::num::Num + std::num::Int + std::cmp::PartialOrd>(r: T) -> Opt
 	}
 } 
 
-
 #[quickcheck]
-fn check_sat_abs(xs: i8) -> bool {
-	let val = sat_abs(xs);
-	
-	if xs > 0 { xs == val }
-	else { val >= 0 && (-xs == val || (xs == -128i8 && val == 127i8)) }
+fn check_abs(xs: i8) -> bool {
+	match abs(xs) {
+		Some(val) =>   if xs > 0 { xs == val }
+					   else { val >= 0 && -xs == val },
+		None =>  xs == -128,
+	}
 }
+
 
 #[doc = "
 abs for saturation integers.
@@ -254,6 +253,17 @@ pub fn sat_abs(r: i8) -> i8 {
 		}
 	}
 } 
+
+
+#[quickcheck]
+fn check_sat_abs(xs: i8) -> bool {
+	let val = sat_abs(xs);
+	
+	if xs > 0 { xs == val }
+	else { val >= 0 && (-xs == val || (xs == -128i8 && val == 127i8)) }
+}
+
+
 
 
 
