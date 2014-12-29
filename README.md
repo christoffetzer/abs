@@ -1,22 +1,25 @@
-sort
-====
+abs
+===
 
-crate sort is a collection of Rust function to demonstrate the use of
-random testing and post-conditions. It should show that post-conditions
-are not always easy to generate. Checking if result is sorted is
-insufficient - we also need to test if it is a permutation.
+Various (incorrect) implementations of abs function. I use these
+variants to introduce random testing and the problem of integer
+overflows.
+
+This crate two correct implementations (abs and sat_abs)
+that should demonstrate ways how one can address integer overflows.
+
 
 ### Installation
 
-To add sort to your package, just add the following
+To add sort to your crate, just add the following
 dependency.
 
 ```toml
-[dependencies.sort]
-git = "https://github.com/christoffetzer/sort"
+[dependencies.abs]
+git = "https://github.com/christoffetzer/abs"
 ```
 
-The `sort` crate depends on the two other crates:
+The `abs` crate depends on two external crates:
 
 - rndtester: https://github.com/christoffetzer/rndtester
 
